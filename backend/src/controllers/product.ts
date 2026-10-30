@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import Product, { IProduct } from '../models/product';
-import { NotFoundError } from '../errors/http-error';
+import NotFoundError from '../errors/not-found-error';
 
 export const getProducts: RequestHandler = (_req, res, next) => {
   Product.find()

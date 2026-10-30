@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { RequestHandler } from 'express';
 import Product from '../models/product';
-import { BadRequestError } from '../errors/http-error';
+import BadRequestError from '../errors/bad-request-error';
 import { calculateOrderTotalCents, matchesOrderTotal, OrderValidationError } from '../utils/order-calculation';
 
 type OrderBody = {
@@ -35,3 +35,5 @@ export const createOrder: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
+export default createOrder;

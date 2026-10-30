@@ -3,7 +3,7 @@ import cors from 'cors';
 import express from 'express';
 import mongoose from 'mongoose';
 import { errors } from 'celebrate';
-import { NotFoundError } from './errors/http-error';
+import NotFoundError from './errors/not-found-error';
 import Product from './models/product';
 import { errorHandler } from './middlewares/error-handler';
 import { errorLogger, requestLogger } from './middlewares/logger';

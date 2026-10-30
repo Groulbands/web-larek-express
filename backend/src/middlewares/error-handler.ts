@@ -1,9 +1,14 @@
 import { ErrorRequestHandler } from 'express';
 import mongoose from 'mongoose';
-import { HttpError } from '../errors/http-error';
+import BadRequestError from '../errors/bad-request-error';
+import ConflictError from '../errors/conflict-error';
+import NotFoundError from '../errors/not-found-error';
 
 export const errorHandler: ErrorRequestHandler = (error: unknown, _req, res, _next) => {
-  if (error instanceof HttpError) {
+  if (error instanceof BadRequestError
+    || error instanceof ConflictError
+    || error instanceof NotFoundError
+  ) {
     res.status(error.statusCode).json({ message: error.message });
     return;
   }
@@ -26,3 +31,5 @@ export const errorHandler: ErrorRequestHandler = (error: unknown, _req, res, _ne
 
   res.status(500).json({ message: 'На сервере произошла ошибка' });
 };
+
+export default errorHandler;
