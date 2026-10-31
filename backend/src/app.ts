@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import path from 'node:path';
 import cors from 'cors';
 import express from 'express';
@@ -9,6 +10,8 @@ import { errorHandler } from './middlewares/error-handler';
 import { errorLogger, requestLogger } from './middlewares/logger';
 import orderRouter from './routes/order';
 import productRouter from './routes/product';
+
+dotenv.config();
 
 const {
   PORT = 3000,

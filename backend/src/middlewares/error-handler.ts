@@ -4,6 +4,8 @@ import BadRequestError from '../errors/bad-request-error';
 import ConflictError from '../errors/conflict-error';
 import NotFoundError from '../errors/not-found-error';
 
+/** Я понял про обработчик, спасибо за замечание */
+
 export const errorHandler: ErrorRequestHandler = (error: unknown, _req, res, _next) => {
   if (error instanceof BadRequestError
     || error instanceof ConflictError
